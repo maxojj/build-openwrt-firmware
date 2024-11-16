@@ -1,0 +1,9 @@
+git clone https://github.com/immortalwrt/immortalwrt.git
+vi feeds.conf.default
+src-git pw2 https://github.com/xiaorouji/openwrt-passwall2.git
+./scripts/feeds update -a
+./scripts/feeds install -a
+make menuconfig
+make -j1 V=s
+
+make -j$(($(nproc) + 1)) V=s
